@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>食物识别智能眼镜 · 功能需求清单</title>
+  <style>
+    :root{
+      --bg:#f6f9ff; --card:#ffffff; --ink:#0f172a; --sub:#475569;
+      --pri:#1d4ed8; --bord:#e5e7eb; --tag:#e0e7ff;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,PingFang SC,MiSans,Helvetica,Arial;}
+    header{background:linear-gradient(135deg,#eaf1ff, #f6f9ff); padding:36px 20px 20px}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+    h1{margin:0 0 6px;font-size:28px;color:var(--ink)}
+    .subtitle{color:var(--sub)}
+    .tags{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px}
+    .tag{background:var(--tag);color:#1e3a8a;padding:4px 10px;border-radius:999px;font-size:12px}
+    .toolbar{display:flex;gap:10px;margin-top:16px}
+    .btn{border:1px solid var(--pri);color:#fff;background:var(--pri);padding:8px 12px;border-radius:10px;cursor:pointer}
+    .btn.sec{background:#fff;color:var(--pri)}
+    main{background:var(--bg);padding:24px 0}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    section{grid-column:span 12;background:var(--card);border:1px solid var(--bord);border-radius:14px;padding:18px}
+    @media(min-width:880px){
+      section{grid-column:span 6}
+      section.wide{grid-column:span 12}
+    }
+    h2{margin:0 0 10px;font-size:18px}
+    .note{color:var(--sub);font-size:13px;margin-bottom:6px}
+    ul.features{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:8px}
+    @media(min-width:640px){ ul.features{grid-template-columns:1fr 1fr}}
+    li{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px dashed #e2e8f0;border-radius:10px;background:#fbfdff}
+    input[type="checkbox"]{margin-top:2px;accent-color:var(--pri)}
+    footer{color:var(--sub);font-size:12px;padding:18px 0;text-align:center}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>食物识别智能眼镜 · 功能需求清单</h1>
+      <p class="subtitle">仅列“需要具备的功能”，不包含任何技术实现与性能指标。</p>
+      <div class="tags">
+        <span class="tag">糖尿病</span>
+        <span class="tag">高血糖</span>
+        <span class="tag">高血脂</span>
+        <span class="tag">体重管理/肥胖</span>
+        <span class="tag">AR文字叠加</span>
+      </div>
+      <div class="toolbar">
+        <button class="btn" onclick="window.print()">打印/保存为PDF</button>
+        <button class="btn sec" onclick="toggleAll(true)">全部勾选</button>
+        <button class="btn sec" onclick="toggleAll(false)">取消全选</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="grid">
+
+        <section>
+          <h2>1）识别与录入</h2>
+          <p class="note">面向日常餐食拍摄与快速记录</p>
+          <ul class="features">
+            <li><input type="checkbox"><span>实时识别餐盘/桌面上的常见食物与饮品</span></li>
+            <li><input type="checkbox"><span>同盘多种食物的组合识别与拆分记录</span></li>
+            <li><input type="checkbox"><span>支持手动搜索/选择食物条目进行纠正</span></li>
+            <li><input type="checkbox"><span>语音触发“开始识别/添加到餐单/撤销”</span></li>
+            <li><input type="checkbox"><span>手势/按键快速拍摄并生成识别结果</span></li>
+            <li><input type="checkbox"><span>支持包装食品条码/配料表扫描录入</span></li>
+            <li><input type="checkbox"><span>识别失败或不确定时的候选项建议</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>2）份量与营养估算</h2>
+          <p class="note">从“吃了什么”到“吃了多少”的量化</p>
+          <ul class="features">
+            <li><input type="checkbox"><span>份量估计（小/中/大/自定义克数）</span></li>
+            <li><input type="checkbox"><span>热量与三大营养素（碳水/蛋白/脂肪）估算</span></li>
+            <li><input type="checkbox"><span>关键营养素提示（糖、钠、胆固醇、饱和脂肪等）</span></li>
+            <li><input type="checkbox"><span>餐次/当日累计营养与热量汇总</span></li>
+            <li><input type="checkbox"><span>超目标/超阈值高亮提醒</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3）健康建议与个性化</h2>
+          <p class="note">面向慢病与体重管理人群的饮食指导</p>
+          <ul class="features">
+            <li><input type="checkbox"><span>针对糖尿病/高血糖/高血脂/肥胖的用餐建议</span></li>
+            <li><input type="checkbox"><span>更健康的替代选择与“少点/换一换”提示</span></li>
+            <li><input type="checkbox"><span>个人每日/每周目标（热量/碳水/蛋白/脂肪）跟踪</span></li>
+            <li><input type="checkbox"><span>过敏原与个人忌口提醒（如花生、乳制品等）</span></li>
+            <li><input type="checkbox"><span>用餐时机建议（运动前后/夜宵等情境提示）</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4）AR显示与交互</h2>
+          <p class="note">信息以文字卡片叠加在视野中</p>
+          <ul class="features">
+            <li><input type="checkbox"><span>简洁/详细两种信息展示模式切换</span></li>
+            <li><input type="checkbox"><span>大字号/高对比/夜间模式/语音朗读无障碍</span></li>
+            <li><input type="checkbox"><span>关键风险词（高糖/高脂/高盐）醒目标记</span></li>
+            <li><input type="checkbox"><span>手势/语音/按键的多模交互控制</span></li>
+            <li><input type="checkbox"><span>在不遮挡视线的区域显示浮动卡片</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>5）记录与数据管理</h2>
+          <p class="note">长期跟踪，形成饮食档案</p>
+          <ul class="features">
+            <li><input type="checkbox"><span>自动生成餐食日志（时间、地点、图像、营养）</span></li>
+            <li><input type="checkbox"><span>历史记录检索与按日/周/月统计视图</span></li>
+            <li><input type="checkbox"><span>趋势与排行榜（高糖高脂摄入次数、最常吃食物）</span></li>
+            <li><input type="checkbox"><span>数据导出（CSV/Excel/图片快照）与分享</span></li>
+            <li><input type="checkbox"><span>支持离线记录与网络恢复后的自动同步</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>6）提醒与反馈</h2>
+          <p class="note">及时纠偏与持续改进</p>
+          <ul class="features">
+            <li><input type="checkbox"><span>超标提醒（如碳水/糖/盐/脂肪）</span></li>
+            <li><input type="checkbox"><span>进度提醒（距离当日目标还差多少）</span></li>
+            <li><input type="checkbox"><span>误识别反馈渠道与用户纠错提交</span></li>
+            <li><input type="checkbox"><span>个性化提醒时间窗（晚间少糖、夜宵克制等）</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>7）场景扩展</h2>
+          <p class="note">覆盖更多真实饮食场景</p>
+          <ul class="features">
+            <li><input type="checkbox"><span>菜单识别（菜单文字拍摄→菜品与营养解读）</span></li>
+            <li><input type="checkbox"><span>外卖/快餐识别（常见品牌与菜品匹配）</span></li>
+            <li><input type="checkbox"><span>自助餐/家庭聚餐的多菜品快速记录</span></li>
+            <li><input type="checkbox"><span>饮品加料（糖度/冰量/配料）个性化记录</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>8）账号与共享</h2>
+          <p class="note">多人使用与健康伙伴协作</p>
+          <ul class="features">
+            <li><input type="checkbox"><span>账号登录、多用户档案与快速切换</span></li>
+            <li><input type="checkbox"><span>家属关注/照护者共享只读链接</span></li>
+            <li><input type="checkbox"><span>（可选）医生/营养师查看用户饮食记录</span></li>
+            <li><input type="checkbox"><span>儿童/长辈关怀模式（更简化的提示）</span></li>
+          </ul>
+        </section>
+
+        <section class="wide">
+          <h2>9）隐私、安全与合规</h2>
+          <p class="note">保障用户数据与使用体验</p>
+          <ul class="features">
+            <li><input type="checkbox"><span>隐私模式（敏感信息最小化显示与遮罩）</span></li>
+            <li><input type="checkbox"><span>数据查看/下载/删除/授权管理入口</span></li>
+            <li><input type="checkbox"><span>首次使用的知情说明与“仅供健康参考”的提示</span></li>
+            <li><input type="checkbox"><span>异常/滥用举报与黑名单管理</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>10）设备与使用状态</h2>
+          <p class="note">保证可用性与连续性</p>
+          <ul class="features">
+            <li><input type="checkbox"><span>电量、存储、网络状态提示</span></li>
+            <li><input type="checkbox"><span>一键唤醒/快速进入识别</span></li>
+            <li><input type="checkbox"><span>新手引导与上手教程</span></li>
+            <li><input type="checkbox"><span>问题诊断与使用建议（拍摄角度、光线等）</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>11）生态联动（可选）</h2>
+          <p class="note">与外部健康设备/平台协同</p>
+          <ul class="features">
+            <li><input type="checkbox"><span>与手机应用联动（查看记录、编辑与分享）</span></li>
+            <li><input type="checkbox"><span>与健康平台/可穿戴设备数据互通（步数、体重等）</span></li>
+            <li><input type="checkbox"><span>食物数据库定期更新与本地收藏夹</span></li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    本页面仅为功能需求清单，用于产品范围界定与评审；不含任何实现细节或性能指标。
+  </footer>
+
+  <script>
+    function toggleAll(checked){
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb=>cb.checked=checked);
+    }
+  </script>
+</body>
+</html>
